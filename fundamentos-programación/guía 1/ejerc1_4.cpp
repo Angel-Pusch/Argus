@@ -3,36 +3,50 @@ using std::cout,std::cin,std::endl;
 
 int main()
 {
-  const float boleto_estudiantil = 17.0;
-  float total_recaudado = 0.0, boleto = 0.0, boleto_trabajador = 0.0;
-  int boletos_vendidos = 0, trabajadores = 0, estudiantes = 0;
+  float boleto_estudiantil = 0.0,total_recaudado = 0.0, boleto = 0.0, boleto_trabajador = 0.0;
+  int boletos_vendidos = 0, trabajador = 0, estudiante = 0, comun=0;
 
-  cout << "Total de boletos vendidos: ";
-  cin >> boletos_vendidos;
+  cout << "\nPrecio del boleto estudiantil: ";
+  cin >> boleto_estudiantil;
 
-  cout << "Cantidad de Trabajadores: ";
-  cin >> trabajadores;
+  cout << "Cantidad de boletos comunes: ";
+  cin >> comun;
 
-  cout << "Cantidad de Estudiantes: ";
-  cin >> estudiantes;
+  cout << "Cantidad de boletos de trabajo: ";
+  cin >> trabajador;
+
+  cout << "Cantidad de boletos de estudiante: ";
+  cin >> estudiante;
 
   boleto = boleto_estudiantil * 100.0 / 50.0;
   boleto_trabajador = boleto - (boleto * 40.0 / 100.0);
+  boletos_vendidos = comun + trabajador + estudiante;
 
-  if(estudiantes == 0 || trabajadores == 0)
+  if(estudiante == 0 || trabajador == 0)
       {
-          total_recaudado = boletos_vendidos * boleto;
+          total_recaudado = comun * boleto;
       }
-  else if(estudiantes != 0 || trabajadores != 0)
+  else if(estudiante != 0 || trabajador != 0)
       {
-          total_recaudado= (boletos_vendidos * boleto) -
-                           (trabajadores * boleto ) +
-                           (trabajadores * boleto_trabajador) -
-                           (estudiantes * boleto) +
-                           (estudiantes * boleto_estudiantil);
+          total_recaudado = (boletos_vendidos * boleto) -
+                            (trabajador * boleto ) +
+                            (trabajador * boleto_trabajador) -
+                            (estudiante * boleto) +
+                            (estudiante * boleto_estudiantil);
       }
-  cout << "El total recaudado por los boletos es la suma de: $"
+
+  cout << "\vTotal de boletos vendidos: "
+       << boletos_vendidos
+       << endl
+       << "Cantidad bol-C: " << comun << " - recaudó $" << comun*boleto
+       << endl
+       << "Cantidad bol-T: " << trabajador << " - recaudó $" << trabajador*boleto_trabajador
+       << endl
+       << "Cantidad bol-E: " << estudiante << " - recaudó $" << estudiante*boleto_estudiantil
+       << endl
+       << "En total se recaudó una suma de: $"
        << total_recaudado
        << endl;
+
   return 0;
 }
