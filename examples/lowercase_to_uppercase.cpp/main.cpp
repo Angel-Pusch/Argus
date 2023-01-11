@@ -8,7 +8,7 @@ void mayuscula(char &letra)
     {
         letra = letra - 'a' + 'A';
     }
-}
+}   
 void mayusculas(string &palabra)
 {
     for (unsigned i = 0; i < palabra.size(); ++i)
