@@ -8,30 +8,35 @@ using std::string;
 
 int main()
 {
-    int palabras_num = 0;
-    int i = 0;
     string palabra;
+    int palabras_num = 0;
+
     cout << "Inserte un texto: ";
     getline(cin, palabra);
 
-    int contador = palabra.size() - 1;
     char primer_letra = palabra[0];
-    char ultima_letra = palabra[contador];
+    char ultima_letra = palabra[palabra.size() - 1];
 
     cout << "El texto comienza con la letra: " << primer_letra << endl;
     cout << "Y finaliza con la letra: " << ultima_letra << endl;
 
-    while (i != contador)
+    for (int i = 0; i < palabra.size(); i++)
     {
-        char caracter = palabra[i];
-        if (caracter == ' ')
+        if (palabra[i] == ' ' && palabra[i + 1 != ' '])
         {
-            palabras_num++;
+            palabras_num = palabras_num + 1;
         }
-
-        i++;
     }
 
-    cout << "La cantidad de palabras es de: " << palabras_num + 1 << endl;
+    palabras_num++;
+    if (palabras_num > 1)
+    {
+        cout << "La cadena posee más de una palabra. " << "(" << palabras_num << ")" << endl;
+    }
+    else if (palabras_num <= 1)
+    {
+        cout << "La cadena contiene una palabra."<< endl;
+    }
+
     return EXIT_SUCCESS;
 }
